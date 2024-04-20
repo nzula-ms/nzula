@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Mapping Assignment Schoool Dropouts </title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <style>
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+
+  <div id="sidebar">
+    <h2>Topic</h2>
+    <p><tr><td><img src="https://networks.au-ibar.org/show/jomo-kenyatta-university-of-agriculture-and-technology-juja-kwale-rd-juja-kenya/image/2008090514-1063-3123-400x300/AU+REC+logos+-+2022-04-04T144233.608.png" alt="JKUAT"></td><td><marquee style="background-color:LIGHTGREEN;><scroll amount="15bg"colour="" marquee=""><h1 style="font-size:50px;">[JKUAT Engineering and Innovation] </marquee><td></tr>
+ </p>
+    <hr>
+    <h2>Search</h2>
+    <input type="text" id="searchInput" placeholder="Search...">
+    <hr>
+    <h2>Add New Post</h2>
+    <br>NEWS
+    <br>School of Mass Media
+    <br> Analysis of the school dropouts
+    <hr>
+    <h2>Share Details</h2>
+    <br>P.O Box 62300-1000
+    <br>Juja-Kiambu, Kenya
+    <hr>
+    <h2>Add Background</h2>
+<body>
+    <p><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127646.75913510627!2d36.797607616911456!3d-1.1876375669667434!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f46276c2d9021%3A0xbefd8e40071d3352!2sJomo%20Kenyatta%20University%20Of%20Agriculture%20And%20Technology!5e0!3m2!1sen!2ske!4v1713530917122!5m2!1sen!2ske" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></p>
+
+
+  </div>
+
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sentiment/4.0.1/sentiment.min.js"></script>
+
+  <script>
+    var map = L.map('map').setView([-4.0435, 39.6682], 12);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    // You can add your own marker for Juja-Kiambu here
+    L.marker([-4.0435, 39.6682]).addTo(map)
+      .bindPopup('Juja-Kiambu, Kenya')
+      .openPopup();
+
+    // Function to analyze school dropouts
+    function analyzeSchoolDropout(text) {
+      var analyzer = new SchoolDropout();
+      var result = analyzer.analyze(text);
+      if (result.score > 0) {
+        return 'positive';
+      } else if (result.score < 0) {
+        return 'negative';
+      } else {
+        return 'neutral';
+      }
+    }
+  </script>
+</body>
+</html>
